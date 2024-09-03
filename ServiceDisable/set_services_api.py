@@ -1,5 +1,4 @@
-from projectInOrg import get_projects, display_directory, get_projects_to_json
-from typing import Dict, List, Union
+from projectInOrg import get_projects, get_projects_to_json
 import os
 
 def get_projs_in_org(num):
@@ -36,7 +35,10 @@ def get_projs():
 
 def main():
     projects, num = get_projs()
-
+    if len(projects)==0:
+        print("project가 존재하지 않습니다. 다시 확인하세요")
+        return
+        
     num = num + 1
     service_name = input(f"{num}. service name을 입력하세요(ex - containerscanning.googleapis.com)")
     num = num + 1
