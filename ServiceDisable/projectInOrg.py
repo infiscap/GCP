@@ -64,6 +64,26 @@ def get_projects(org_name, org_id):
     
     return hierarchy
 
+def get_projects_to_json(resource: Union[Dict[str, Union[str, List[str]]], None]):
+    projects = []
+
+    if resource is None:
+        return
+
+    #org or folder list
+    for key in resource.keys(): 
+        if isinstance(resource[key], list):
+            # project list
+            for idx in range(len(resource[key])):
+                if isinstance(resource[key][idx], dict):
+                    return_proj = get_projects_to_json(resource[key][idx]) 
+                    for proj in return_proj:
+                        projects.append( proj)
+                else:
+                    # project
+                    projects.append(resource[key][idx])
+    return projects
+
 def display_directory(hierarchy: Union[Dict[str, Union[str, List[str]]], None], space:int = 0):
     if hierarchy is None:
         return

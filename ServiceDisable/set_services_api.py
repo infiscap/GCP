@@ -25,9 +25,9 @@ def get_projs():
         choise = input(f"{num}. 프로젝트를 직접 입력하시겠습니까?(1. yes/2. no) 1 또는 2를 입력하세요")
         if choise==DIRECT_PROJECT_NAME:
             num = num + 1
-            projects=input(f"{num}. 프로젝트를 콤마(,)를 이용해 입력하세요?ex(aaa, bbb)")
-            projects = projects.replace(" ", "")
-            projects=projects.split(",")
+            projects=input(f"{num}. 프로젝트를 띄어쓰기(' ')로 이용해 입력하세요?ex(aaa bbb)")
+            # projects = projects.replace(" ", "")
+            projects=projects.split(" ")
         elif choise==KEYWORD_PROJECT_NAME:
             num = num + 1
             tmp_projs = get_projs_in_org(num)
