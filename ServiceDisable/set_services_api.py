@@ -1,5 +1,11 @@
 from projectInOrg import get_projects, get_projects_to_json
 import os
+ALL_PROJECTS="1"
+SOME_PROJECTS="2"
+DIRECT_PROJECT_NAME="1"
+KEYWORD_PROJECT_NAME="2"
+ENABLE="1"
+EMPTY=1
 
 def get_projs_in_org(num):
     org_id=input(f'{num}. Organization ID를 입력하세요 (ex - 541096552061)')
@@ -11,18 +17,18 @@ def get_projs():
     projects=[]
     num=1
     choise = input(f"{num}. 모든 프로젝트를 확인하시겠습니까?(1. yes/2. no) 1 또는 2를 입력하세요")
-    if choise=="1":
+    if choise==ALL_PROJECTS:
         num = num + 1
         projects = get_projs_in_org(num)
-    elif choise=="2":
+    elif choise==SOME_PROJECTS:
         num = num + 1
         choise = input(f"{num}. 프로젝트를 직접 입력하시겠습니까?(1. yes/2. no) 1 또는 2를 입력하세요")
-        if choise=="1":
+        if choise==DIRECT_PROJECT_NAME:
             num = num + 1
             projects=input(f"{num}. 프로젝트를 콤마(,)를 이용해 입력하세요?ex(aaa, bbb)")
             projects = projects.replace(" ", "")
             projects=projects.split(",")
-        elif choise=="2":
+        elif choise==KEYWORD_PROJECT_NAME:
             num = num + 1
             tmp_projs = get_projs_in_org(num)
             num = num + 1
@@ -46,7 +52,7 @@ def main():
 
     setable = "disable"
 
-    if en_disable == "1":
+    if en_disable == ENABLE:
         setable = "enable"
     
     for proj in projects:
@@ -61,7 +67,7 @@ def main():
             print(proj)
             print(service_disable)
         except:
-            1
+            EMPTY
 
 if __name__=="__main__":
     main()
