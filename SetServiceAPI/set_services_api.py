@@ -16,19 +16,19 @@ def get_projs_in_org(num):
 def get_projs():
     projects=[]
     num=1
-    choise = input(f"{num}. 모든 프로젝트를 확인하시겠습니까?(1. yes/2. no) 1 또는 2를 입력하세요")
-    if choise==ALL_PROJECTS:
+    choice = input(f"{num}. 모든 프로젝트를 확인하시겠습니까?(1. yes/2. no) 1 또는 2를 입력하세요")
+    if choice==ALL_PROJECTS:
         num = num + 1
         projects = get_projs_in_org(num)
-    elif choise==SOME_PROJECTS:
+    elif choice==SOME_PROJECTS:
         num = num + 1
-        choise = input(f"{num}. 프로젝트를 직접 입력하시겠습니까?(1. yes/2. no) 1 또는 2를 입력하세요")
-        if choise==DIRECT_PROJECT_NAME:
+        choice = input(f"{num}. 프로젝트를 직접 입력하시겠습니까?(1. yes/2. no) 1 또는 2를 입력하세요")
+        if choice==DIRECT_PROJECT_NAME:
             num = num + 1
             projects=input(f"{num}. 프로젝트를 띄어쓰기(' ')로 이용해 입력하세요?ex(aaa bbb)")
             # projects = projects.replace(" ", "")
             projects=projects.split(" ")
-        elif choise==KEYWORD_PROJECT_NAME:
+        elif choice==KEYWORD_PROJECT_NAME:
             num = num + 1
             tmp_projs = get_projs_in_org(num)
             num = num + 1
