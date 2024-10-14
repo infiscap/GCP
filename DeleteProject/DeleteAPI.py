@@ -2,7 +2,7 @@ import os
 import sys
 
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-from CommonAPI.projectInOrg import get_projects, get_projects_to_json
+from CommonAPI.projectInOrg import get_projects, get_projects_to_json, get_folders
 from google.cloud import resourcemanager_v3
 
 ALL_PROJECTS="1"
@@ -12,6 +12,9 @@ KEYWORD_PROJECT_NAME="2"
 NO = "2"
 GAP = 10
 
+def getFolder():
+    print(get_folders("organizations/911781043447"))
+    
 def get_projs_in_org(num):
     org_id=input(f'{num}. Organization ID를 입력하세요 (ex - 911781043447)')
     print("project 검색 중 입니다.")

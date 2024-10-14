@@ -2,11 +2,11 @@
 
 ## 1. 파일 옮기기
 
-GCP Terminal에 projectInOrg.py와 servicesDisable.py를 옮긴다.
+git clone https://github.com/infiscap/GCP.git
 
 ## 2. 실행
 
-$ **python servicesDisable.py**
+$ **python setServicesMain.py**
 
 ### 2.1 프로젝트 선택
 

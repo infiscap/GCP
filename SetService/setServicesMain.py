@@ -1,5 +1,5 @@
 import os
-from getProjects import get_projs_in_org, get_projs
+from SetServiceAPI import get_projs
 
 ENABLE="1"
 EMPTY=1
