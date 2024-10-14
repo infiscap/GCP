@@ -4,17 +4,19 @@ from google.cloud import resourcemanager_v3
 
 def get_folders(
     parent_id: str = "organizations/12345",
-    folders: Union[List[str], None] = None,
-) -> List[str]:
+    folders: Dict[str, str] = None,
+) -> Dict[str, str]:
     if folders is None:
-        folders = []
+        folders = {}
     client = resourcemanager_v3.FoldersClient()
     request = resourcemanager_v3.ListFoldersRequest(
         parent=parent_id,
     )
     page_result = client.list_folders(request=request)
     for pages in page_result:
-        folders.append((pages.name, pages.display_name))
+        print(type(pages.name))
+        print(type(pages.display_name))
+        folders[pages.name] = pages.display_name
         get_folders(parent_id=pages.name, folders=folders)
     return folders
 
