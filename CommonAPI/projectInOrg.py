@@ -13,9 +13,14 @@ def get_folders(
         parent=parent_id,
     )
     page_result = client.list_folders(request=request)
+    # if page_result:
+    #     print("page_result")
+    # if not page_result:
+    #     print("not page_result")
+    # print(f"{parent_id} - {page_result.folders}")
     for pages in page_result:
-        print(type(pages.name))
-        print(type(pages.display_name))
+        # print(type(pages.name))
+        # print(type(pages.display_name))
         folders[pages.name] = pages.display_name
         get_folders(parent_id=pages.name, folders=folders)
     return folders

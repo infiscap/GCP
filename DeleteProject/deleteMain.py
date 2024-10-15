@@ -31,8 +31,9 @@ def main():
             print(lien_projects_dic)
             if DELETE == input("삭제할까요?(1. yes/2. no) 1 또는 2를 입력하세요"):
                 DeleteLienProject(lien_projects_dic)
-        DeleteFolder(org_id)
+        DeleteFolder(f"organizations/{org_id}")
         
-    
+def main2():
+    DeleteFolder("911781043447")    
 if __name__=="__main__":
     main()

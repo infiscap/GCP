@@ -11,6 +11,7 @@ KEYWORD_PROJECT_NAME="2"
 NO = "2"
 GAP = 10
 DELETE="1"
+ENDOFFOLDER = True
 
 def delete_folder(folder_id):
     client = resourcemanager_v3.FoldersClient()
@@ -22,13 +23,23 @@ def delete_folder(folder_id):
     print("Waiting for operation to complete...")
     response = operation.result()
     print(response)
-    
-def DeleteFolder(org_id):
-    folders = get_folders(f"organizations/{org_id}")
-    
-    for folder_id in folders.keys():
-        delete_folder(folder_id)
-    
+
+def DeleteFolder(
+    parent_id: str = "organizations/12345"
+) -> bool:
+    client = resourcemanager_v3.FoldersClient()
+    request = resourcemanager_v3.ListFoldersRequest(
+        parent=parent_id,
+    )
+    page_result = client.list_folders(request=request)
+    if not page_result.folders:
+        return ENDOFFOLDER
+   
+    for pages in page_result:
+        if ENDOFFOLDER == DeleteFolder(parent_id=pages.name):
+            delete_folder(pages.name)
+    return ENDOFFOLDER
+
     
 def get_projs_in_org(num):
     org_id=input(f'{num}. Organization ID를 입력하세요 (ex - 911781043447)')
