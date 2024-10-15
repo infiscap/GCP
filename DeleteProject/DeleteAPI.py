@@ -70,8 +70,7 @@ def get_some_projs(projects, num):
     excepted_projs=[]
 
     cnt = int(len(projects) / GAP)+1
-    # if cnt==0:
-    #     excepted_projs = excepted_projs + except_projects(projects, num)
+    
     for page_cnt in range(0, cnt):
         start = page_cnt * GAP
         end = start + GAP

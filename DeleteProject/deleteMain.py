@@ -33,7 +33,6 @@ def main():
                 DeleteLienProject(lien_projects_dic)
         DeleteFolder(f"organizations/{org_id}")
         
-def main2():
-    DeleteFolder("911781043447")    
+    
 if __name__=="__main__":
     main()
